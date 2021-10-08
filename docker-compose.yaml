@@ -1,0 +1,13 @@
+version: '3'
+services:
+  api:
+    image: node:14
+    volumes:
+      - ./node_modules:/node_modules
+      - ./tsconfig.json:/tsconfig.json
+      - ./package.json:/package.json
+      - ./index.ts:/index.ts
+    ports:
+      - 3000:3000
+    command: yarn run ts-node-dev index
+    env_file: .env.development
