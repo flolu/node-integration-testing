@@ -24,6 +24,16 @@ app.post('/add-todo', async (req, res) => {
   res.json(created)
 })
 
+app.post('/check-todo', async (req, res) => {
+  await database.checkTodo(req.body.id)
+  res.end()
+})
+
+app.post('/delete-todo', async (req, res) => {
+  await database.deleteTodo(req.body.id)
+  res.end()
+})
+
 app.get('/todos', async (_req, res) => {
   const todos = await database.getTodos()
   res.json(todos)

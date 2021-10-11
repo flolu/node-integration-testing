@@ -10,12 +10,7 @@ describe('application', () => {
   let mysqlContainer: StartedTestContainer
   let apiContainer: StartedTestContainer
   let network: StartedNetwork
-
   let apiUrl: string
-  let addUrl: string
-  let getUrl: string
-  let checkUrl: string
-  let deleteUrl: string
 
   const text1 = 'Write unit tests'
   const text2 = 'Write integration tests'
@@ -56,31 +51,31 @@ describe('application', () => {
     apiLogs.on('err', line => console.error(line))
 
     apiUrl = `http://${apiContainer.getHost()}:${apiContainer.getMappedPort(3000)}`
-    addUrl = `${apiUrl}/add-todo`
-    getUrl = `${apiUrl}/todos`
-    checkUrl = `${apiUrl}/check-todo`
-    deleteUrl = `${apiUrl}/delete-todo`
   })
 
   it('adds new todos', async () => {
-    const response1 = await axios.post(addUrl, {text: text1})
+    const response1 = await axios.post(`${apiUrl}/add-todo`, {text: text1})
     expect(response1.data).toEqual(todo1)
 
-    const response2 = await axios.post(addUrl, {text: text2})
+    const response2 = await axios.post(`${apiUrl}/add-todo`, {text: text2})
     expect(response2.data).toEqual(todo2)
   })
 
   it('gets existing todos', async () => {
-    const response = await axios.get(getUrl)
+    const response = await axios.get(`${apiUrl}/todos`)
     expect(response.data).toEqual([todo1, todo2])
   })
 
   it('checks todos', async () => {
-    //
+    await axios.post(`${apiUrl}/check-todo`, {id: todo1.id})
+    const response = await axios.get(`${apiUrl}/todos`)
+    expect(response.data).toEqual([{...todo1, status: TodoStatus.Done}, todo2])
   })
 
   it('deletes todos', async () => {
-    //
+    await axios.post(`${apiUrl}/delete-todo`, {id: todo2.id})
+    const response = await axios.get(`${apiUrl}/todos`)
+    expect(response.data).toEqual([{...todo1, status: TodoStatus.Done}])
   })
 
   afterAll(async () => {

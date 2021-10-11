@@ -1,11 +1,14 @@
 name: test
 on: [push, pull_request]
 jobs:
-  check-code:
+  integration-tests:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Test
-        run: echo "This is a dummy test"
+      - name: Install dependencies
+        run: yarn install --prefer-offline --frozen-lockfile
+
+      - name: Run integration tests
+        run: make test

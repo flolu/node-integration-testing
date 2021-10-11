@@ -57,6 +57,31 @@ export async function insertTodo(text: string): Promise<Todo> {
   }
 }
 
+export async function checkTodo(id: string) {
+  const connection = await getConnection()
+  await connection.query(
+    `
+    UPDATE ${TABLE_NAME}
+    SET ${TableColumn.Status} = ${TodoStatus.Done}
+    WHERE ${TableColumn.Id} = ?;
+    `,
+    [id]
+  )
+  await connection.release()
+}
+
+export async function deleteTodo(id: string) {
+  const connection = await getConnection()
+  await connection.query(
+    `
+    DELETE FROM ${TABLE_NAME}
+    WHERE ${TableColumn.Id} = ?;
+    `,
+    [id]
+  )
+  await connection.release()
+}
+
 export async function getTodos(): Promise<Todo[]> {
   const connection = await getConnection()
   const [rows] = await connection.query(
