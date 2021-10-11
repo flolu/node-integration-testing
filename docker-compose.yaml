@@ -1,13 +1,27 @@
 version: '3'
 services:
+  mysql:
+    image: mysql:8
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: db
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u root --password=$$MYSQL_ROOT_PASSWORD
+
   api:
     image: node:14
     volumes:
       - ./node_modules:/node_modules
       - ./tsconfig.json:/tsconfig.json
       - ./package.json:/package.json
+      - ./database.ts:/database.ts
       - ./index.ts:/index.ts
     ports:
       - 3000:3000
     command: yarn run ts-node-dev index
     env_file: .env.development
+    working_dir: /
+    depends_on:
+      - mysql

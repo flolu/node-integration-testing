@@ -6,7 +6,7 @@
       "request": "launch",
       "name": "Jasmine",
       "program": "${workspaceFolder}/node_modules/jasmine-ts/lib/index",
-      "args": ["${file}"],
+      "args": ["--random=false", "${file}"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     }
