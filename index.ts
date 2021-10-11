@@ -41,9 +41,8 @@ app.get('/todos', async (_req, res) => {
 
 async function main() {
   try {
-    console.log('starting api...')
     await database.initialize()
-    app.listen(3000, () => console.log('api started on port 3000'))
+    app.listen(3000)
   } catch (err) {
     process.exit(1)
   }

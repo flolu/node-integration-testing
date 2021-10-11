@@ -3,6 +3,10 @@
   "engines": {
     "node": ">=14"
   },
+  "scripts": {
+    "dev": "docker-compose -f docker-compose.yml up --build",
+    "test": "jasmine-ts --random=false index.test.ts"
+  },
   "devDependencies": {
     "@types/async-retry": "^1.4.3",
     "@types/body-parser": "^1.19.1",
