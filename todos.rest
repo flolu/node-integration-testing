@@ -1,0 +1,22 @@
+POST http://localhost:3000/add-todo
+content-type: application/json
+
+{"text": "Build integration tests"}
+
+###
+
+GET http://localhost:3000/todos
+
+###
+
+POST http://localhost:3000/check-todo
+content-type: application/json
+
+{"id": 1}
+
+###
+
+POST http://localhost:3000/delete-todo
+content-type: application/json
+
+{"id": 1}

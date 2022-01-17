@@ -5,15 +5,15 @@
   <br>
   <h1>Integration Testing</h1>
   <p>Example for Easy and Effective Integration Testing with Node.js and Testcontainers</p>
-  <!-- <a href="https://youtu.be/XXX">
+  <a href="https://youtu.be/XXX">
     <img width="320px" height="180px" src="https://img.youtube.com/vi/XXX/mqdefault.jpg" style="border-radius: 1rem;" />
     <p>Watch the YouTube Tutorial</p>
-  </a> -->
+  </a>
 </div>
 
 # Usage
 
-**Recommended OS**: Ubuntu 20.04 LTS
+**Recommended OS**: Linux
 
 **Requirements**: Yarn, Node.js
 

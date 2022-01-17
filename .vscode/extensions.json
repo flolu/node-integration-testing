@@ -4,6 +4,7 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "streetsidesoftware.code-spell-checker",
-    "cweijan.vscode-mysql-client2"
+    "cweijan.vscode-mysql-client2",
+    "humao.rest-client"
   ]
 }
