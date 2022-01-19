@@ -74,7 +74,8 @@ export async function deleteTodo(id: string) {
   const connection = await getConnection()
   await connection.query(
     `
-    DELETE FROM ${TABLE_NAME}
+    UPDATE ${TABLE_NAME}
+    SET ${TableColumn.Status} = ${TodoStatus.Deleted}
     WHERE ${TableColumn.Id} = ?;
     `,
     [id]

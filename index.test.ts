@@ -31,7 +31,6 @@ describe('application', () => {
 
     apiContainer = await new GenericContainer('node:14')
       .withExposedPorts(3000)
-      .withName('test_api')
       .withEnv('MYSQL_HOST', 'test_mysql')
       .withEnv('MYSQL_PORT', '3306')
       .withEnv('MYSQL_USER', 'root')
