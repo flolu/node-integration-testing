@@ -5,8 +5,8 @@
   <br>
   <h1>Integration Testing</h1>
   <p>Example for Easy and Effective Integration Testing with Node.js and Testcontainers</p>
-  <a href="https://youtu.be/XXX">
-    <img width="320px" height="180px" src="https://img.youtube.com/vi/XXX/mqdefault.jpg" style="border-radius: 1rem;" />
+  <a href="https://youtu.be/eRPkNd40n94">
+    <img width="320px" height="180px" src="https://img.youtube.com/vi/eRPkNd40n94/mqdefault.jpg" style="border-radius: 1rem;" />
     <p>Watch the YouTube Tutorial</p>
   </a>
 </div>
